@@ -77,3 +77,4 @@ terre-et-sens/
 **Lysa** — Développeuse Web Full Stack  
 📍 Occitanie, France  
 🌐 Projet réalisé dans le cadre de la formation développeur web
+# Terre_et_Sens
