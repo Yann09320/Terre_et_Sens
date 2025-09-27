@@ -1,0 +1,208 @@
+/* Polices */
+:root{
+  --vert-foret: #2E7D32;
+  --vert-clair: #A5D6A7;
+  --beige: #F5F5DC;
+  --gris: #333333;
+  --ui-contrast: rgba(255,255,255,0.18);
+  --hero-overlay: rgba(0,0,0,0.45);
+  --radius: 8px;
+}
+
+/* Reset léger et typo */
+* { box-sizing: border-box; }
+
+html,body { height: 100%; }
+
+body {
+  font-family: 'Roboto', system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial;
+  color: var(--gris);
+  background-color: #fffaf0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Titres */
+h1,h2,h3 { font-family: 'Roboto', sans-serif; font-weight: 700; margin: 0 0 0.5rem 0; }
+
+/* Slogan / citations */
+.slogan, blockquote, .citation {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+ 
+}
+
+/* Accessibilité et performance pratiques */
+img { display: block; max-width: 100%; height: auto; }
+
+
+/* Menu déroulant */
+.navbar-collapse {
+  background-color: transparent;
+  padding: 1rem;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+/* NAVBAR : meilleure disposition */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  min-height: 80px;
+  background-color: var(--beige);
+  position: relative;
+  z-index: 10;
+}
+
+/* masquer le titre (si tu veux le conserver plus tard, supprime cette règle) */
+.navbar .site-title { display: none !important; }
+
+/* Logo bien centré */
+.navbar .navbar-brand {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Logo agrandi et responsive */
+.navbar .navbar-brand img {
+  height: 88px !important;
+  width: auto;
+  max-width: 100%;
+  display: block;
+}
+
+/* Toggler positionné à droite, accessible */
+.navbar .navbar-toggler {
+  position: relative;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+  border-radius: 6px;
+}
+
+.nav-item .nav-link {
+  font-weight: 500;
+  color: var(--gris);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.nav-link {
+    background-color: transparent;
+    border: 2px solid var(--vert-foret);
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin: 5px;
+    color: var(--vert-foret);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: var(--vert-foret);
+    color: #fff;
+}
+
+.nav-block {
+  background-color: var(--vert-clair);
+  border-radius: var(--radius);
+  padding: 0.4rem 0.8rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease;
+}
+
+.nav-block:hover {
+  background-color: var(--vert-foret);
+}
+
+@media (max-width: 767.98px) {
+  /* on positionne le menu en absolute sous la navbar */
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: transparent;
+    padding: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    z-index: 20;            /* au-dessus du hero */
+  }
+}
+
+/* HERO : image de fond robuste + overlay */
+.hero {
+  position: relative;
+  background-image: url('images/Foret_Verte.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--vert-clair); /* fallback si image indisponible */
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* overlay sombre pour lisibilité */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--hero-overlay);
+  z-index: 0;
+}
+
+/* Amélioration si backdrop-filter est supporté (Safari incl.) */
+@supports ((-webkit-backdrop-filter: blur(6px)) or (backdrop-filter: blur(6px))) {
+  .hero::before { background: rgba(0,0,0,0.24); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+  
+}
+
+/* Contenu du hero au-dessus de l'overlay */
+.hero .container { position: relative; z-index: 1; }
+
+/* CTA */
+.btn-primary {
+  background-color: var(--vert-foret);
+  border-color: var(--vert-foret);
+  color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 6px 18px rgba(46,125,50,0.12);
+  padding: 0.6rem 1rem;
+  transition: background-color .18s ease, transform .12s ease;
+  cursor: pointer;
+}
+
+.btn-primary:hover { background-color: #246626; transform: translateY(-1px); }
+
+.btn-primary:focus { outline: 3px solid rgba(165,214,167,0.35); outline-offset: 2px; }
+
+/* Sections */
+section.container { max-width: 1000px; margin: 0 auto; padding: 2rem 1rem; }
+
+/* Typographie responsive */
+h1 { font-size: 2.5rem; line-height: 1.05; }
+
+@media (max-width: 768px) {
+  h1 { font-size: 1.8rem; }
+  .hero { min-height: 240px; padding: 2rem 1rem; }
+}
+
+/* Footer */
+footer { background: #222; color: #fff; }
+
+footer p { margin: 0; font-size: 0.95rem; color: #f0f0f0; padding: 0.75rem 0; }
+
+
+
+/* Utility léger pour spacing si besoin */
+.u-centered { display:flex; justify-content:center; align-items:center; }
+
