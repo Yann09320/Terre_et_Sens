@@ -1,14 +1,14 @@
 (() => {
   'use strict';
 
-  // 🔧 Helpers
+  //  Helpers
   const qs = (sel, ctx) => (ctx || document).querySelector(sel);
   const qsa = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
   const on = (el, ev, fn) => el?.addEventListener(ev, fn);
   const addClass = (el, c) => el?.classList.add(c);
   const removeClass = (el, c) => el?.classList.remove(c);
 
-  // 📱 Menu hamburger
+  //  Menu hamburger
   const navbar = qs('.navbar');
   const toggler = qs('.navbar-toggler');
   const collapse = qs('#navbarNav');
@@ -47,7 +47,7 @@
 
   qsa('#navbarNav .nav-link').forEach(link => on(link, 'click', onNavLinkClick));
 
-  // ⌨️ Accessibilité clavier
+  //  Accessibilité clavier
   on(document, 'keydown', e => {
     if (!collapse?.classList.contains('show')) return;
 
@@ -67,7 +67,7 @@
     }
   });
 
-  // 🎯 Scroll fluide
+  //  Scroll fluide
   const smoothScrollTo = (targetSelector, offset = 0) => {
     const target = qs(targetSelector);
     if (!target) return;
@@ -84,7 +84,7 @@
     });
   }
 
-  // 🖼️ WebP support
+  //  WebP support
   const testWebP = callback => {
     const img = new Image();
     img.onload = img.onerror = () => callback(img.height === 2);
@@ -105,7 +105,7 @@
     }
   });
 
-  // 💤 Lazy loading
+  //  Lazy loading
   const lazyLoadImages = () => {
     const lazy = qsa('img[data-lazy]');
     if (!lazy.length) return;
@@ -132,7 +132,7 @@
   };
   lazyLoadImages();
 
-  // 🚀 Preload hero image
+  //  Preload hero image
   (() => {
     const hero = qs('.hero');
     if (!hero) return;
@@ -148,7 +148,7 @@
     }
   })();
 
-  // 🧼 Fermer le menu si clic en dehors
+  //  Fermer le menu si clic en dehors
   on(document, 'click', e => {
     if (!collapse?.classList.contains('show')) return;
     const target = e.target;
@@ -157,7 +157,7 @@
     }
   });
 
-  // 📊 Suivi des clics CTA
+  //  Suivi des clics CTA
   qsa('.btn-primary, .cta').forEach(btn => {
     on(btn, 'click', () => {
       try {
@@ -166,7 +166,7 @@
     });
   });
 
-  // 🧪 API minimale pour le debug
+  //  API minimale pour le debug
   window.AppMain = { toggleMenu };
 
 })();
